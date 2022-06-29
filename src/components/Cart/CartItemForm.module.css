@@ -4,17 +4,29 @@
   
   .forms button {
     font: inherit;
+    width:3rem;
     cursor: pointer;
-    background-color: #8a2b06;
+    background-color: white;
     border: 1px solid #8a2b06;
-    color: white;
-    padding: 0.25rem 2rem;
+    color: #8a2b06;
+    padding:0 0 5px 0;
     border-radius: 20px;
-    font-weight: bold;
+    font-weight:bold;
+    margin: 0 0.25rem;
+    
   }
   
   .forms button:hover,
   .forms button:active {
     background-color: #641e03;
     border-color: #641e03;
+    color:white;
+  }
+
+  .quantity {
+    font-weight: bold;
+    border: 1px solid #ccc;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    color: #363636;
   }

@@ -10,7 +10,6 @@ const MealItemForm=(props)=>{
         event.preventDefault();
         const quantity = document.getElementById('amount_'+ props.id).value;
         ctx.addItem({...props.item,quantity:quantity});
-        console.log('inside addtocarthandler',ctx.items);
 
     };
     return (<form className={styles.form}>
