@@ -1,17 +1,42 @@
+import { useContext } from 'react';
+import CartContext from '../../Store/create-context';
+import Card from '../UI/Card';
 import Model from '../UI/Model';
 import styles from './Cart.module.css';
+import CartItem from './CartItem';
 
 
 const Cart=props=>{
+    const ctx=useContext(CartContext);
+    
+    const TotalAmount=()=>{
+        let totalamount = 0;
+        ctx.items.forEach(item=>{
+            totalamount = totalamount + Number(item.quantity * item.price)
+        });
+        console.log(totalamount)
+        return totalamount.toFixed(2);
+      
+    }
+
 const cartItem=(<ul className={styles['cart-items']}>
-{[{id:'c1',name:'shushi',amount:'2',price:'12.99',}].map(item=><li>{item.name}</li>)}
+{ctx.items.map(item=><CartItem 
+     key={item.id + 'cart'}
+     name={item.name}
+     price={item.price}
+     quantity={item.quantity}></CartItem>
+    )}
 </ul>);
     return(
         <Model onCloseCart={props.onCloseCart}>
-            {cartItem}
+            <Card>
+                <ul>
+                {cartItem}
+                </ul>
+            </Card>
             <div className={styles.total}>
                 <span>Total Amount</span>
-                <span>35.62</span>
+                <span>{TotalAmount()}</span>
             </div>
             <div className={styles.actions}>
                 <button className={styles['button--alt']} onClick={props.onCloseCart}>Close</button>
